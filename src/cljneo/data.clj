@@ -64,16 +64,20 @@
         github (ndom/create-profile "Github" "mmwaikar" "https://github.com/mmwaikar")]
     (vector twitter github)))
 
-(defn get-manoj []
-  (let [location (ndom/create-location "4/3 Tara Residency, Opposite PMC Office, Kothrud" "411038" "Pune" "IN"
-                                     "Maharashtra")
-        personalInfo (ndom/create-personal-info "Manoj Waikar" "Technical Architect, Polyglot programmer" ""
-                                       "manoj_w@yahoo.com" "+91 86007 18432" "http://mmwaikar.wordpress.com"
-                                       "I love programming and have shipped unit tested software using Clojure,
-                                       AngularJS, JavaScript, C# and Java. I've written a few build scripts in F# using
-                                       FAKE. Open to any interesting work that utilizes front-end JS frameworks like
-                                       AngularJS or any of the functional languages like F#, Clojure, Erlang or
-                                       Haskell." location (create-profiles))
-        resume (ndom/create-resume personalInfo (create-experience) [] (create-education) [] [] (create-skills)
-                                 (create-languages) (create-interests) [])]
-    resume))
+(defn create-location []
+  (ndom/create-location "4/3 Tara Residency, Opposite PMC Office, Kothrud" "411038" "Pune" "IN"
+                        "Maharashtra"))
+
+(defn create-individual []
+  (ndom/create-personal-info "Manoj Waikar" "Technical Architect, Polyglot programmer" ""
+                             "manoj_w@yahoo.com" "+91 86007 18432" "http://mmwaikar.wordpress.com"
+                             "I love programming and have shipped unit tested software using Clojure,
+                             AngularJS, JavaScript, C# and Java. I've written a few build scripts in F# using
+                             FAKE. Open to any interesting work that utilizes front-end JS frameworks like
+                             AngularJS or any of the functional languages like F#, Clojure, Erlang or
+                             Haskell."))
+
+;(defn get-manoj []
+;  (let [resume (ndom/create-resume personalInfo (create-experience) [] (create-education) [] [] (create-skills)
+;                                 (create-languages) (create-interests) [])]
+;    resume))

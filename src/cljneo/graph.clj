@@ -1,6 +1,7 @@
 (ns cljneo.graph
   (:require [clojurewerkz.neocons.rest :as nr]
             [clojurewerkz.neocons.rest.nodes :as nn]
+            [clojurewerkz.neocons.rest.relationships :as nrl]
             [cljneo.data :as ndata]))
 
 ;(def conn (nr/connect "http://neo4j:neoman4j@localhost:7474/db/data/"))
@@ -30,5 +31,15 @@
   (let [profiles (ndata/create-profiles)]
     (mapv #(nn/create conn %) profiles)))
 
-(defn create-resume-node []
-  (nn/create conn (ndata/get-manoj)))
+;(defn create-resume-node []
+;  (nn/create conn (ndata/get-manoj)))
+
+(defn create-resume []
+  (let [individual (nn/create conn (ndata/create-individual))
+        location (nn/create conn (ndata/create-location))
+        langs (mapv #(nn/create conn %) (ndata/create-languages))]
+    ; lives-at
+    (nrl/create conn individual location :residence)
+    ; languages
+    (mapv #(nrl/create conn individual % :knows) langs)
+    ))

@@ -1,16 +1,26 @@
 (ns cljneo.domain)
 
 (defn create-personal-info
-  [name label picture email phone website summary location profiles]
+  [name label picture email phone website summary]
   {:name name
    :label label
    :picture picture
    :email email
    :phone phone
    :website website
-   :summary summary
-   :location location
-   :profiles profiles})
+   :summary summary})
+
+;(defn create-personal-info
+;  [name label picture email phone website summary location profiles]
+;  {:name name
+;   :label label
+;   :picture picture
+;   :email email
+;   :phone phone
+;   :website website
+;   :summary summary
+;   :location location
+;   :profiles profiles})
 
 (defn create-location
   [address postalCode city countryCode region]
